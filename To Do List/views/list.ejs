@@ -1,0 +1,42 @@
+<%- include("header")-%>
+
+
+<body>
+
+    <div class="box" id="heading"> 
+        <h1><%= listTitle %> </h1>
+    </div>
+
+    <div class="box">
+        <ul>
+            <%for(let item of items){ %>
+                <div class="item">
+                    <input type="checkbox">
+                    <p> 
+                        <%=item%>
+                    </p>
+                </div>
+            
+           <% }%>
+        </ul>
+
+        <form action="/" method="post">
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <button id="firstbutton" type="submit" name="list" value=<%=listTitle%>>+</button>
+        </form>
+
+
+    </div>
+        
+    <%if(listTitle!=='Work List'){%>
+        <form action="/work" method="get">
+            <button id="secondbutton" type="submit">Work List</button>
+        </form>
+    <%}else{ %>
+        <form action="/" method="get">
+            <button id="secondbutton" type="submit">Home</button>
+        </form>
+    <%}%>
+
+    
+    <%- include("footer")-%>
